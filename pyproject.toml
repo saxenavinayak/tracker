@@ -1,14 +1,19 @@
-[tool.poetry]
-name = "Tracker"
-version = "0.0.1"
+[project]
+name = "tracker"
+version = "0.1.0"
 description = "Simple app to track visits"
-authors = ["Vinayak Saxena <vinayak.saxena@uwaterloo.ca>"]
-package-mode = false
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Vinayak Saxena", email = "vinayak.saxena@uwaterloo.ca" }
+]
+dependencies = [
+    "fastapi[standard]>=0.135.1",
+    "sqlalchemy==2.0.48",
+]
 
-
-[tool.poetry.dependencies]
-python = "^3.11"
-fastapi = { version = "^0.135.1", extras = ["standard"] }
+[tool.uv]
+dev-dependencies = []
 
 [tool.fastapi]
 entrypoint = "app.main:app"
