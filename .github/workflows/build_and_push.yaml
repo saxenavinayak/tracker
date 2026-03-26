@@ -54,7 +54,7 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v3
         with:
-          subject-name: index.docker.io/saxenavinayak/sugar-lane
+          subject-name: index.docker.io/saxenavinayak/tracker
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
   # update_deployment_manifest:
