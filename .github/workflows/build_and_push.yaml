@@ -70,7 +70,7 @@ jobs:
           ref: main
       - name: Update manifest and commit
         run: |
-          python3 .github/update_manifest.py --file_path applications/tracker/deployments/tracker.yaml --key spec,template,spec,containers,0,image --value saxenavinayak/tracker:${{ github.sha }}
+          python3 .github/update_manifest.py --file_path applications/tracker/tracker.yaml --key spec,template,spec,containers,0,image --value saxenavinayak/tracker:${{ github.sha }}
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
