@@ -58,6 +58,7 @@ jobs:
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
   update_deployment_manifest:
+    needs: push_to_registry
     name: Update deployment manifest
     runs-on: ubuntu-latest
     permissions:
