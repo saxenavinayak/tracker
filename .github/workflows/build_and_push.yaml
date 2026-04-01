@@ -65,6 +65,9 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v6
+        with:
+          repository: saxenavinayak/sugar-lane
+          ref: main
       - name: Update manifest and commit
         run: |
           python3 .github/update_manifest.py --file_path applications/tracker/deployments/tracker.yaml --key spec,template,spec,containers,0,image --value saxenavinayak/tracker:${{ github.sha }}
