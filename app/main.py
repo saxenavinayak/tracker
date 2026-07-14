@@ -1,12 +1,17 @@
+from pathlib import Path
+
 from fastapi import FastAPI, Request, Depends
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from . import models, db_setup
 
 
 models.Base.metadata.create_all(bind=db_setup.engine)
 
-app = FastAPI()
+STATIC_DIRECTORY = Path(__file__).parent / "static"
+app = FastAPI(title="Vinayak Saxena | Portfolio")
+app.mount("/static", StaticFiles(directory=STATIC_DIRECTORY), name="static")
 
 # Dependency to get a DB session
 def get_db():
@@ -18,7 +23,10 @@ def get_db():
 
 
 @app.get("/")
-async def root(request: Request, db: Session = Depends(get_db)):
+@app.get("/experience")
+@app.get("/projects")
+@app.get("/education")
+async def portfolio(request: Request, db: Session = Depends(get_db)):
 
     requestor_ip = request.client.host
     user_agent = request.headers.get("user-agent")
@@ -30,17 +38,6 @@ async def root(request: Request, db: Session = Depends(get_db)):
 
     
     
-    content = """
-    <html>
-        <head>
-            <meta http-equiv="refresh" content="3;url=https://github.com/saxenavinayak" />
-        </head>
-        <body>
-            <h1>Hello from Waterloo!</h1>
-            <p> Redirecting in 3 seconds...</p>
-        </body>
-    </html>
-    """
+    with (STATIC_DIRECTORY / "index.html").open(encoding="utf-8") as page:
+        content = page.read()
     return HTMLResponse(content=content)
-
-

@@ -1,15 +1,10 @@
-FROM python:3.11
+FROM python:3.11-slim
 COPY --from=ghcr.io/astral-sh/uv:0.9.2 /uv /bin/
 
-RUN mkdir tracker
-WORKDIR  /tracker
-
-
-COPY pyproject.toml /tracker/
-
-
-RUN uv sync 
+WORKDIR /tracker
 
 COPY . .
+RUN uv sync --no-dev
 
-CMD ["uv", "run", "fastapi", "run", "app/main.py", "--port", "8080"]
+EXPOSE 8080
+CMD ["uv", "run", "fastapi", "run", "app/main.py", "--host", "0.0.0.0", "--port", "8080"]
