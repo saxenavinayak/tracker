@@ -1,7 +1,7 @@
 const experience = [
-  { period: "Aug. 2025 — Present", title: "Automation Engineer", organization: "Carta · Platform & Infra · Kitchener, ON" },
+  { period: "Aug. 2025 — Present", title: "Software Engineer", organization: "Carta · Platform & Infra · Kitchener, ON" },
   { period: "Sept. 2024 — Dec. 2024", title: "Software Engineer Intern", organization: "Spire Global · Data Platform · Cambridge, ON" },
-  { period: "Jan. 2023 — Aug. 2024", title: "Automation Engineer Intern", organization: "Carta · Platform & Infra · Kitchener, ON" },
+  { period: "Jan. 2023 — Aug. 2024", title: "Software Engineer Intern", organization: "Carta · Platform & Infra · Kitchener, ON" },
   { period: "May 2022 — Aug. 2022", title: "Software Engineer Intern", organization: "Fleet Complete · Platform & Infra · Remote" }
 ];
 
